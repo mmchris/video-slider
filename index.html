@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Metaverse Nails - Video Slider</title>
+
+
+<style>
+
+	@import './fonts/fonts.css';
+	@import './fonts/font-awesome.min.css';
+	@import './css/flexslider.css';
+	@import './css/video-js.css';
+
+
+/* CSS GO HERE
+-------------------------------------------------------------- */
+
+	.video span {
+		display: block;
+		position: relative;
+		height: 0px;
+		width: 100%;
+		padding: 56.5% 0 0 0;
+	}
+	
+	.video span .video-js {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 100%;
+		width: 100%;
+	}
+</style>
+
+
+<script type='text/javascript' src='./js/jquery.js'></script>
+<script type='text/javascript' src='./js/flexslider.js'></script>
+<script type='text/javascript' src='./js/video.js'></script>
+
+<script> videojs.options.flash.swf = "video-js.swf"</script>
+
+<script type="text/javascript">
+
+// https://github.com/videojs/video.js/wiki/Browser-and-Device-Compatibility
+
+// https://github.com/videojs/video.js/blob/stable/docs/guides/api.md
+
+// need this method to work for all videos and then just set to 16:9 ratio 
+
+// first video auto plays then all videos after play insuccession - 
+
+
+/* SCRIPT GO HERE
+-------------------------------------------------------------- */
+
+$(document).ready(function() {
+	
+	var _slider;
+	var _videos = {};
+	$.each($('.video-repeater li'), function (i) {
+		var video = $(this).find('video').first();
+		if (video) {
+			video.on('ended', function () {
+				_slider.play();
+			});
+			video.on('play', function () {
+				_slider.pause();
+			});
+			_videos[i] = video;
+		} 
+	});
+	
+	$('.video-repeater').flexslider({    
+		animation: "fade",
+		direction: "horizontal",
+		animationLoop: true,
+		slideshow: true,
+		slideshowSpeed: 600,
+		animationSpeed: 600,
+		pauseOnAction: false,
+		pauseOnHover: false,
+		useCSS: true,
+		touch: true,
+		controlNav: true,
+		directionNav: true,
+		prevText: "Prev", 
+		nextText: "Next",
+		keyboard: false,
+		multipleKeyboard: false,
+		// Callback API
+		start: function(slider) {
+			_slider = slider;
+			_videos[slider.currentSlide].trigger('play');
+		},            //Callback: function(slider) - Fires when the slider loads the first slide
+		before: function(slider){
+			_videos[slider.currentSlide].trigger('pause');
+			_videos[slider.currentSlide][0].currentTime = 0;
+		},           //Callback: function(slider) - Fires asynchronously with each slider animation
+		after: function(slider){
+			_videos[slider.currentSlide].trigger('play');
+			
+		},            //Callback: function(slider) - Fires after each slider animation completes
+		end: function(){},              //Callback: function(slider) - Fires when the slider reaches the last slide
+	
+	});
+
+});
+
+</script>
+
+</head>
+<body>
+<div class="flexslider video-repeater">
+	<ul class="slides">
+
+			<li class="video">
+            	<span>
+                    <video id="Clip1" class="video-js vjs-default-skin" 
+                    
+                    
+                    
+                    data-setup="{}"  
+                    muted 
+                    controls  
+                    >
+							<source src="./videos/Clip-1-240p.mp4" type='video/mp4'>    
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>
+				</span>
+			</li>
+
+			<li class="video">
+            	<span>
+                    <video id="Clip2" class="video-js vjs-default-skin"
+                                        
+                    
+                    
+                    data-setup="{}"  
+                    muted 
+                    controls  
+                    >
+							<source src="./videos/Clip-2-240p.mp4" type='video/mp4'>    
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>
+				</span>
+			</li>
+
+			<li class="video">
+            	<span>
+                    <video id="Clip3" class="video-js vjs-default-skin"
+                                        
+                    
+                    
+                    data-setup="{}"  
+                    muted 
+                    controls  
+                    >
+							<source src="./videos/Clip-3-240p.mp4" type='video/mp4'>    
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>
+				</span>
+			</li>
+			
+			<li class="video">
+            	<span>
+                    <video id="Clip4" class="video-js vjs-default-skin"
+                                        
+                    
+                    
+                    data-setup="{}"  
+                    muted 
+                    controls  
+                    >
+							<source src="./videos/Clip-4-240p.mp4" type='video/mp4'>    
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>
+				</span>
+			</li>
+
+		
+	</ul>
+</div>
+
+	</body>
+</html>

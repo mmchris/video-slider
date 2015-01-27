@@ -1,0 +1,32 @@
+/* Fonts
+-------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'BrandonTextLight';
+    src: url('BrandonTextLight.eot');
+    src: url('BrandonTextLight.eot') format('embedded-opentype'),
+         url('BrandonTextLight.woff2') format('woff2'),
+         url('BrandonTextLight.woff') format('woff'),
+         url('BrandonTextLight.ttf') format('truetype'),
+         url('BrandonTextLight.svg#BrandonTextLight') format('svg');
+}
+
+@font-face {
+    font-family: 'BrandonTextLightItalic';
+    src: url('BrandonTextLightItalic.eot');
+    src: url('BrandonTextLightItalic.eot') format('embedded-opentype'),
+         url('BrandonTextLightItalic.woff2') format('woff2'),
+         url('BrandonTextLightItalic.woff') format('woff'),
+         url('BrandonTextLightItalic.ttf') format('truetype'),
+         url('BrandonTextLightItalic.svg#BrandonTextLightItalic') format('svg');
+}
+
+@font-face {
+    font-family: 'BrandonTextMedium';
+    src: url('BrandonTextMedium.eot');
+    src: url('BrandonTextMedium.eot') format('embedded-opentype'),
+         url('BrandonTextMedium.woff2') format('woff2'),
+         url('BrandonTextMedium.woff') format('woff'),
+         url('BrandonTextMedium.ttf') format('truetype'),
+         url('BrandonTextMedium.svg#BrandonTextMedium') format('svg');
+}
